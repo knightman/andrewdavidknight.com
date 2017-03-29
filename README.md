@@ -3,10 +3,6 @@ Source content for my personal webpage
 
 A personal reference collection of test projects for my random development efforts.
 
-![Knight Labs](/brick-wall-bw.jpg)
-
-## Installation & Usage
-TODO: Add more detailed instructions.
 
 ## Release History
 
