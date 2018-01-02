@@ -9,7 +9,11 @@ A personal reference collection of test projects for my random development effor
 * 2017.03.28
     * Initial publish
 
+* 2017.12
+    * Background and style changes; minor content updates
+
 ## Credits
+
 Design: Identity by HTML5 UP
 
 ## About
