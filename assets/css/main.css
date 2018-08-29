@@ -63,7 +63,7 @@
 	@media screen and (max-width: 480px) {
 
 		html, body {
-			min-width: 320px;
+			min-width: 800px; /* orig 320px */
 		}
 
 	}
@@ -184,7 +184,7 @@
 		-ms-transition: color 0.2s ease, border-color 0.2s ease;
 		transition: color 0.2s ease, border-color 0.2s ease;
 		color: inherit;
-		text-decoration: none;
+		text-decoration: underline;
 	}
 
 		a:before {
@@ -195,7 +195,7 @@
 		}
 
 		a:hover {
-			color: #ff7496;
+			color: #ffd900; /*orig #ff7496*/
 		}
 
 	strong, b {
@@ -329,7 +329,7 @@
 		input[type="tel"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #ff7496;
+			border-color: #ffd900;
 		}
 
 	.select-wrapper {
@@ -430,13 +430,13 @@
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			color: #ff7496;
+			color: #ffd900;
 			content: '\f00c';
 		}
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #ff7496;
+			border-color: #ffd900;
 		}
 
 	input[type="checkbox"] + label:before {
@@ -550,10 +550,10 @@
 					height: 3.75em;
 					border-radius: 100%;
 					border: solid 1px #c8cccf;
-					line-height: 3.75em;
+					line-height: 3.75em; /*3.75*/
 					overflow: hidden;
 					text-align: center;
-					text-indent: 3.75em;
+					text-indent: 3.75em; /*3.75*/
 					white-space: nowrap;
 				}
 
@@ -572,7 +572,7 @@
 					}
 
 					ul.icons li a:hover:before {
-						text-shadow: 1.25px 0px 0px #C07200, -1.25px 0px 0px #C07200, 0px 1.25px 0px #C07200, 0px -1.25px 0px #C07200;
+						text-shadow: 1.25px 0px 0px #ffd900, -1.25px 0px 0px #ffd900, 0px 1.25px 0px #ffd900, 0px -1.25px 0px #C07200;
 					}
 
 					ul.icons li a:before {
@@ -588,7 +588,7 @@
 					}
 
 					ul.icons li a:hover {
-						border-color: #C07200; /* border-color: #ff7496; */
+						border-color: #ffd900; /* border-color: #ff7496; also used #c07200, #FFA600*/
 					}
 
 			@media screen and (max-width: 480px) {
@@ -662,8 +662,8 @@
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			border-color: #ff7496;
-			color: #ff7496 !important;
+			border-color: #ffd900;
+			color: #ffd900 !important;
 		}
 
 		input[type="submit"].icon,
@@ -729,7 +729,7 @@
 	#main {
 		position: relative;
 		max-width: 100%;
-		min-width: 27em;
+		min-width: 800px; /* orig 27em */
 		padding: 4.5em 3em 3em 3em ;
 		background: #ffffff;
 		border-radius: 4px;
@@ -880,3 +880,70 @@
 		body.is-ie #wrapper {
 			height: 100%;
 		}
+
+/* ADDED NEW CLASSES */
+/* content1{
+	background-color: transparent;
+	border: solid 1px #f80593;
+	color: #0eec0e;
+	height: 1200px;
+	width: 800px;
+}
+
+panel1{
+	background-color: darkgrey;
+	height: 100%;
+	width: 100%;
+} */
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 80%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /*15% from the top and centered*/
+    padding: 20px;
+    border: 1px solid #888;
+	width: 90%; /*Could be more or less, depending on screen size*/
+	height: 70%;
+	color: #414f57;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14pt;
+	font-weight: 300;
+	line-height: 2;
+	letter-spacing: 0.2em;
+}
+
+/* The Close Button */
+.close {
+    color: #414f57;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* my modal additions */
+.modal-p {
+	background-color: darkgrey;
+	width: 100%;
+	height: 400px;
+}

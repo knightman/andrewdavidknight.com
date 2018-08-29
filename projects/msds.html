@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118460059-1"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-118460059-1');
+		</script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- <script> //this works
+		$(document).ready(function(){
+			$("button1").click(function(){
+				$("iframe1").toggle();
+			});
+		});
+		</script>
+		<script>
+			$(document).ready(function(){
+				$('#hideshow').on('click', function(event) {        
+					$('.content1').toggle('show');
+				});
+			});
+		</script> -->
+
+		<title>MSDS Page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-loading">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					<section id="main">
+						<header>
+							<h2>MSDS Coursework</h2>
+							Projects from my graduate studies. Program info can be found 
+							<a href="https://sps.northwestern.edu/masters/data-science/" target="_blank">here</a>.
+                        </header>
+						<hr />
+
+                        <!-- Section 1-->
+                        <p><h2>MSDS 411</h2>
+                            <font size="2" color="grey">Selection of my work from Generalized Linear Models course</font>
+                        </p>
+                        <!-- <p><a href="./projectresources/411Assignment1Knight.html" target="_blank">Moneyball</a></p> -->
+						<p><a href="msds411moneyball.html">Moneyball</a></p>
+						<p><a href="msds411insurance.html">Auto Insurance</a></p>
+						<p><a href="msds411wine.html">Wine Sales</a></p>
+                        <hr />
+                        
+                        <!-- Section 2-->
+                        <p><h2>MSDS 410</h2>
+                            <font size="2" color="grey">Selection of my work from Linear Regression course</font>
+						</p>
+                        <p><a href="msds410housing.html">Housing Data</a></p>
+						<p><a href="msds410stocks.html">Stock Portfolio</a></p>
+						<p><a href="msds410liquor.html">Liquor Factor Analysis</a></p>
+						<p><a href="msds410employment.html">European Employment</a></p>
+						<br>
+						
+						<footer>
+							<ul class="icons">
+								<li><a href="main.html" class="fa-arrow-left">Back</a></li>
+								<li><a href="../index.html" class="fa-home">Home</a></li>
+							</ul>
+						</footer>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright">
+							<li>&copy; 2018 Andrew Knight</li>
+						</ul>
+					</footer>
+			</div>
+
+		<!-- Scripts -->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+	</body>
+</html>
