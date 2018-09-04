@@ -1,0 +1,356 @@
+
+<!-- saved from url=(0150)file:///C:/Users/andrewknight/Desktop/Personal/411Assignment1Knight2/b53fe124-ae5d-11e8-b59b-0cc47a792c0a_id_b53fe124-ae5d-11e8-b59b-0cc47a792c0a.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+span.cls_002{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_002{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_003{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_003{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_005{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: underline}
+div.cls_005{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_004{font-family:Arial,serif;font-size:8.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_004{font-family:Arial,serif;font-size:8.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+-->
+</style>
+<script type="text/javascript" src="file:///C:/Users/andrewknight/Desktop/Personal/411Assignment1Knight2/b53fe124-ae5d-11e8-b59b-0cc47a792c0a_id_b53fe124-ae5d-11e8-b59b-0cc47a792c0a_files/wz_jsgraphics.js"></script>
+</head>
+<body>
+<div style="position:absolute;left:50%;margin-left:-306px;top:0px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background01.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:213.75px;top:71.75px" class="cls_002"><span class="cls_002">Assignment #1- MSDS 411 Summer 2018</span></div>
+<div style="position:absolute;left:273.00px;top:85.25px" class="cls_003"><span class="cls_003">Andrew Knight</span></div>
+<div style="position:absolute;left:72.00px;top:389.00px" class="cls_005"><span class="cls_005">Introduction</span></div>
+<div style="position:absolute;left:72.00px;top:402.50px" class="cls_002"><span class="cls_002">My complete work for this assignment can be found in the Jupyter Notebook file</span></div>
+<div style="position:absolute;left:72.00px;top:416.00px" class="cls_002"><span class="cls_002">411_Assignment_1_Knight.ipynb. All reference to the ‘notebook’ below refer to my work in this Jupyter</span></div>
+<div style="position:absolute;left:72.00px;top:429.50px" class="cls_002"><span class="cls_002">Notebook file. </span><span class="cls_003">The file 411_Assignment_1_Knight_Notebook_Printout.pdf shows all code and output.</span></div>
+<div style="position:absolute;left:72.00px;top:456.50px" class="cls_002"><span class="cls_002">In this assignment, we seek to build a predictive model using linear regression to predict the number of</span></div>
+<div style="position:absolute;left:72.00px;top:470.00px" class="cls_002"><span class="cls_002">wins for each baseball team in the test dataset. The model will use the independent predictor variables</span></div>
+<div style="position:absolute;left:72.00px;top:483.50px" class="cls_002"><span class="cls_002">and the dependent response variable ‘TARGET_WINS’ from the training dataset.</span></div>
+<div style="position:absolute;left:72.00px;top:510.50px" class="cls_005"><span class="cls_005">Data Exploration (EDA)</span></div>
+<div style="position:absolute;left:72.00px;top:524.00px" class="cls_002"><span class="cls_002">My goals for EDA focused on a few key areas. First, as with any EDA, I took some time to familiarize</span></div>
+<div style="position:absolute;left:72.00px;top:537.50px" class="cls_002"><span class="cls_002">myself with the datasets. Several steps within the notebook dealt with understanding the structure and</span></div>
+<div style="position:absolute;left:72.00px;top:551.00px" class="cls_002"><span class="cls_002">potential issues with the datasets. First some high-level basics.</span></div>
+<div style="position:absolute;left:72.00px;top:578.00px" class="cls_002"><span class="cls_002">There are 2276 records in the training dataset and 259 in the test dataset. Each observation (row)</span></div>
+<div style="position:absolute;left:72.00px;top:591.50px" class="cls_002"><span class="cls_002">represents a single team for a whole season. There are 15 columns of independent variables and a</span></div>
+<div style="position:absolute;left:72.00px;top:605.00px" class="cls_002"><span class="cls_002">response (TARGET_WINS) that can be used to build a predictive model. However, information that we are</span></div>
+<div style="position:absolute;left:72.00px;top:618.50px" class="cls_002"><span class="cls_002">not given is which team is represented for each record, how many games were played that season or how</span></div>
+<div style="position:absolute;left:72.00px;top:632.00px" class="cls_002"><span class="cls_002">many teams are represented for each season. There are 135 years represented in the data which we will</span></div>
+<div style="position:absolute;left:72.00px;top:645.50px" class="cls_002"><span class="cls_002">use as the assumption that this is the number of seasons (ignoring war years and player strikes), dividing</span></div>
+<div style="position:absolute;left:72.00px;top:659.00px" class="cls_002"><span class="cls_002">the records by 135 we get an average of 17 teams represented.</span></div>
+<div style="position:absolute;left:72.00px;top:686.00px" class="cls_002"><span class="cls_002">All variables were given as continuous numerics. Six of the 15 variables contained sme NaN values which</span></div>
+<div style="position:absolute;left:72.00px;top:699.50px" class="cls_002"><span class="cls_002">had to be corrected. NA (null or NaN) values were initially replaced with zeros. Some of these would need</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:802px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background02.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:71.75px" class="cls_002"><span class="cls_002">to be further modified later. The six variables containing significant numbers of NA values for both</span></div>
+<div style="position:absolute;left:72.00px;top:85.25px" class="cls_002"><span class="cls_002">training and test sets are given in the table below.</span></div>
+<div style="position:absolute;left:143.25px;top:118.00px" class="cls_004"><span class="cls_004">TEAM_BATTIN</span></div>
+<div style="position:absolute;left:209.25px;top:118.00px" class="cls_004"><span class="cls_004">TEAM_BASERU</span></div>
+<div style="position:absolute;left:275.25px;top:118.00px" class="cls_004"><span class="cls_004">TEAM_FIELDIN</span></div>
+<div style="position:absolute;left:341.25px;top:118.00px" class="cls_004"><span class="cls_004">TEAM_BATTIN</span></div>
+<div style="position:absolute;left:407.25px;top:118.00px" class="cls_004"><span class="cls_004">TEAM_PITCHI</span></div>
+<div style="position:absolute;left:473.25px;top:118.00px" class="cls_004"><span class="cls_004">TEAM_BASERU</span></div>
+<div style="position:absolute;left:143.25px;top:127.75px" class="cls_004"><span class="cls_004">G_HBP</span></div>
+<div style="position:absolute;left:209.25px;top:127.75px" class="cls_004"><span class="cls_004">N_CS</span></div>
+<div style="position:absolute;left:275.25px;top:127.75px" class="cls_004"><span class="cls_004">G_DP</span></div>
+<div style="position:absolute;left:341.25px;top:127.75px" class="cls_004"><span class="cls_004">G_SO</span></div>
+<div style="position:absolute;left:407.25px;top:127.75px" class="cls_004"><span class="cls_004">NG_SO</span></div>
+<div style="position:absolute;left:473.25px;top:127.75px" class="cls_004"><span class="cls_004">N_SB</span></div>
+<div style="position:absolute;left:77.25px;top:149.00px" class="cls_002"><span class="cls_002">Train</span></div>
+<div style="position:absolute;left:143.25px;top:149.00px" class="cls_002"><span class="cls_002">2085</span></div>
+<div style="position:absolute;left:209.25px;top:149.00px" class="cls_002"><span class="cls_002">772</span></div>
+<div style="position:absolute;left:275.25px;top:149.00px" class="cls_002"><span class="cls_002">289</span></div>
+<div style="position:absolute;left:341.25px;top:149.00px" class="cls_002"><span class="cls_002">102</span></div>
+<div style="position:absolute;left:407.25px;top:149.00px" class="cls_002"><span class="cls_002">102</span></div>
+<div style="position:absolute;left:473.25px;top:149.00px" class="cls_002"><span class="cls_002">131</span></div>
+<div style="position:absolute;left:77.25px;top:172.25px" class="cls_002"><span class="cls_002">Test</span></div>
+<div style="position:absolute;left:143.25px;top:172.25px" class="cls_002"><span class="cls_002">240</span></div>
+<div style="position:absolute;left:209.25px;top:172.25px" class="cls_002"><span class="cls_002">87</span></div>
+<div style="position:absolute;left:275.25px;top:172.25px" class="cls_002"><span class="cls_002">31</span></div>
+<div style="position:absolute;left:341.25px;top:172.25px" class="cls_002"><span class="cls_002">13</span></div>
+<div style="position:absolute;left:407.25px;top:172.25px" class="cls_002"><span class="cls_002">13</span></div>
+<div style="position:absolute;left:473.25px;top:172.25px" class="cls_002"><span class="cls_002">13</span></div>
+<div style="position:absolute;left:72.00px;top:217.25px" class="cls_002"><span class="cls_002">After checking mean, median and standard deviation for each, I saved the resulting data frame (with NaN</span></div>
+<div style="position:absolute;left:72.00px;top:230.75px" class="cls_002"><span class="cls_002">values replaced by zeros to new data frames named </span><span class="cls_003">train1</span><span class="cls_002"> and </span><span class="cls_003">test1</span><span class="cls_002">. I checked the distribution of each</span></div>
+<div style="position:absolute;left:72.00px;top:244.25px" class="cls_002"><span class="cls_002">variable provided and immediately began looking for things that could cause issues in my models. I</span></div>
+<div style="position:absolute;left:72.00px;top:257.75px" class="cls_002"><span class="cls_002">started by looking at the minimum values (which for several variables was now zero) due to the fillna</span></div>
+<div style="position:absolute;left:72.00px;top:271.25px" class="cls_002"><span class="cls_002">function used early on. Looking at a histogram of each I could tell when there were many ‘missing’ values</span></div>
+<div style="position:absolute;left:72.00px;top:284.75px" class="cls_002"><span class="cls_002">that had been filled in a zeros. Two particularly high offenders in this area were TEAM_BATTING_HBP and</span></div>
+<div style="position:absolute;left:72.00px;top:298.25px" class="cls_002"><span class="cls_002">TEAM_BASERUN_CS. Both of these had a high percentage of null values and as such I decided not to use</span></div>
+<div style="position:absolute;left:72.00px;top:311.75px" class="cls_002"><span class="cls_002">either of these two variables in my models.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:1604px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background03.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:71.75px" class="cls_002"><span class="cls_002">I also noticed some other opportunities to prepare these data for use in the model building process by</span></div>
+<div style="position:absolute;left:72.00px;top:85.25px" class="cls_002"><span class="cls_002">applying transformations to several variables. For example, the histogram for some variables show they</span></div>
+<div style="position:absolute;left:72.00px;top:98.75px" class="cls_002"><span class="cls_002">may be good candidates for a log transformation. These include variables like the TEAM_BASERUN_SB</span></div>
+<div style="position:absolute;left:72.00px;top:112.25px" class="cls_002"><span class="cls_002">and TEAM_FIELDING_E. These transformations will be listed in detail below.</span></div>
+<div style="position:absolute;left:72.00px;top:125.75px" class="cls_002"><span class="cls_002">We also clearly see other variables have many zeros that need to be addressed because the are</span></div>
+<div style="position:absolute;left:72.00px;top:139.25px" class="cls_002"><span class="cls_002">significantly skewing the data. This is a result of replacing NA values with zeros. Data cleaning described</span></div>
+<div style="position:absolute;left:72.00px;top:152.75px" class="cls_002"><span class="cls_002">in the next section will handle this issue so that the resulting models perform better without removing</span></div>
+<div style="position:absolute;left:72.00px;top:166.25px" class="cls_002"><span class="cls_002">rows of data.</span></div>
+<div style="position:absolute;left:72.00px;top:193.25px" class="cls_002"><span class="cls_002">Next, I focused on a the response variable. The distribution shows close similarity to normality and there</span></div>
+<div style="position:absolute;left:72.00px;top:206.75px" class="cls_002"><span class="cls_002">are no NA values, and the mean, standard deviation, and max values all seem reasonable given basic</span></div>
+<div style="position:absolute;left:72.00px;top:220.25px" class="cls_002"><span class="cls_002">knowledge of baseball. However, the min value displayed raises a flag. One single data point in the</span></div>
+<div style="position:absolute;left:72.00px;top:233.75px" class="cls_002"><span class="cls_002">training set contained zero TARGET_WINS, which even in a short season of the 1800s, seems suspect.</span></div>
+<div style="position:absolute;left:72.00px;top:247.25px" class="cls_002"><span class="cls_002">While the team was clearly bad with 24,057 TEAM_PITCHING_H and 1890 TEAM_FIELDING_E, ending a</span></div>
+<div style="position:absolute;left:72.00px;top:260.75px" class="cls_002"><span class="cls_002">season with zero wins can’t be accurate. I decided to remove this record only because I did not trust the</span></div>
+<div style="position:absolute;left:72.00px;top:274.25px" class="cls_002"><span class="cls_002">validity of this observation. It was the only observation (row) that I completely removed.</span></div>
+<div style="position:absolute;left:72.00px;top:390.50px" class="cls_002"><span class="cls_002">Then using the describe() function, I noticed some extreme outliers in the training data. The</span></div>
+<div style="position:absolute;left:72.00px;top:404.00px" class="cls_002"><span class="cls_002">TEAM_PITCHING_SO has some particularly high outliers (an order of magnitude higher than third</span></div>
+<div style="position:absolute;left:72.00px;top:417.50px" class="cls_002"><span class="cls_002">quartile), as high as 19, 278 (shown in output below) when the mean value is 781. I decided to impute the</span></div>
+<div style="position:absolute;left:72.00px;top:431.00px" class="cls_002"><span class="cls_002">outlier values with max values of three times the mean as a max value rather than replace them with the</span></div>
+<div style="position:absolute;left:72.00px;top:444.50px" class="cls_002"><span class="cls_002">mean value.</span></div>
+<div style="position:absolute;left:72.00px;top:569.75px" class="cls_002"><span class="cls_002">Many of the other variables that had null values replaced with zeros showed significant skew in their</span></div>
+<div style="position:absolute;left:72.00px;top:583.25px" class="cls_002"><span class="cls_002">distributions due to these values. Looking through these variables, it became clear that when taken in</span></div>
+<div style="position:absolute;left:72.00px;top:596.75px" class="cls_002"><span class="cls_002">context of a typical full season, the numbers simply did not make much sense when a little knowledge of</span></div>
+<div style="position:absolute;left:72.00px;top:610.25px" class="cls_002"><span class="cls_002">baseball is applied. For example, team stats for a whole season with zero home runs, zero pitching</span></div>
+<div style="position:absolute;left:72.00px;top:623.75px" class="cls_002"><span class="cls_002">strikeouts, zero batting walks, and others just doesn’t make sense even for shorter seasons in the past.</span></div>
+<div style="position:absolute;left:72.00px;top:637.25px" class="cls_002"><span class="cls_002">This is where more data would have been helpful such as actual number of games played in the season</span></div>
+<div style="position:absolute;left:72.00px;top:650.75px" class="cls_002"><span class="cls_002">or perhaps an indicator about invalid data. However, given that my choice was to limit the number of</span></div>
+<div style="position:absolute;left:72.00px;top:664.25px" class="cls_002"><span class="cls_002">observations that I am simply ‘throwing out’ was one of my primary objectives. So instead, I was forced to</span></div>
+<div style="position:absolute;left:72.00px;top:677.75px" class="cls_002"><span class="cls_002">estimate the values. I chose to use the overall mean to replace them. The calculations in the notebook</span></div>
+<div style="position:absolute;left:72.00px;top:691.25px" class="cls_002"><span class="cls_002">indicate exactly which were modified and how.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:2406px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background04.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:71.75px" class="cls_002"><span class="cls_002">The other reason I did this was that based on initial analysis it seemed a log transformation may be useful</span></div>
+<div style="position:absolute;left:72.00px;top:85.25px" class="cls_002"><span class="cls_002">for some predictors. As such, I wanted positive non-zero values to use for the np.log function.</span></div>
+<div style="position:absolute;left:72.00px;top:112.25px" class="cls_002"><span class="cls_002">I also tested creating a few new variables, both for clarifying given variables and for performing</span></div>
+<div style="position:absolute;left:72.00px;top:125.75px" class="cls_002"><span class="cls_002">transformations to test in my model building process.</span></div>
+<div style="position:absolute;left:72.00px;top:139.25px" class="cls_002"><span class="cls_002">Because TEAM_BATTING_H (hits) includes singles, doubles, triples and home runs, I chose to create a</span></div>
+<div style="position:absolute;left:72.00px;top:152.75px" class="cls_002"><span class="cls_002">new variable for singles by subtracting the other given values for HR, 2B, and 3B from it to arrive at the</span></div>
+<div style="position:absolute;left:72.00px;top:166.25px" class="cls_002"><span class="cls_002">number of singles. I thought it would be better to have control over each metric separately during model</span></div>
+<div style="position:absolute;left:72.00px;top:179.75px" class="cls_002"><span class="cls_002">selection.</span></div>
+<div style="position:absolute;left:72.00px;top:206.75px" class="cls_002"><span class="cls_002">I also tried creating a few variables for to test performance using LOG and SQRT of several predictor</span></div>
+<div style="position:absolute;left:72.00px;top:220.25px" class="cls_002"><span class="cls_002">variables and the response in the training set. While the log-transformed variables improved several of my</span></div>
+<div style="position:absolute;left:72.00px;top:233.75px" class="cls_002"><span class="cls_002">predictive models (using R-squared, AIC/BIC, etc) they did not seem to improve my submitted data score</span></div>
+<div style="position:absolute;left:72.00px;top:247.25px" class="cls_002"><span class="cls_002">for the criteria in Kaggle.</span></div>
+<div style="position:absolute;left:72.00px;top:274.25px" class="cls_005"><span class="cls_005">Data Preparation</span></div>
+<div style="position:absolute;left:72.00px;top:287.75px" class="cls_002"><span class="cls_002">My data preparation for model testing was completed over many iterations. After checking for outliers of</span></div>
+<div style="position:absolute;left:72.00px;top:301.25px" class="cls_002"><span class="cls_002">each of the variables, checking linearity, and normality assumptions using various plots shown in sections</span></div>
+<div style="position:absolute;left:72.00px;top:314.75px" class="cls_002"><span class="cls_002">2 and 3 in my notebook, I proceeded to testing models. With each model I typically referred back to the</span></div>
+<div style="position:absolute;left:72.00px;top:328.25px" class="cls_002"><span class="cls_002">assumptions and when required performed additional tests moving between EDA, data preparation and</span></div>
+<div style="position:absolute;left:72.00px;top:341.75px" class="cls_002"><span class="cls_002">model building with each iteration.</span></div>
+<div style="position:absolute;left:72.00px;top:368.75px" class="cls_002"><span class="cls_002">For the data preparation section I was primarily interested in addressing outliers, checking linearity and</span></div>
+<div style="position:absolute;left:72.00px;top:382.25px" class="cls_002"><span class="cls_002">normality assumptions for my linear model and creating additional variables. First, I reviewed outliers.</span></div>
+<div style="position:absolute;left:72.00px;top:395.75px" class="cls_002"><span class="cls_002">For the extreme outliers on the high end, I found several variables with data points exceeding three times</span></div>
+<div style="position:absolute;left:72.00px;top:409.25px" class="cls_002"><span class="cls_002">the mean. Excluding the variables TEAM_BATTING_HBP and TEAM_BASERUN_CS which I had already</span></div>
+<div style="position:absolute;left:72.00px;top:422.75px" class="cls_002"><span class="cls_002">determined lacked enough meaningful data points, the following variables had the highest number of</span></div>
+<div style="position:absolute;left:72.00px;top:436.25px" class="cls_002"><span class="cls_002">extreme outliers.</span></div>
+<div style="position:absolute;left:77.25px;top:469.25px" class="cls_003"><span class="cls_003">Variable</span></div>
+<div style="position:absolute;left:233.25px;top:469.25px" class="cls_003"><span class="cls_003">Mean</span></div>
+<div style="position:absolute;left:389.25px;top:469.25px" class="cls_003"><span class="cls_003">Number of Outliers &gt; 3x Mean</span></div>
+<div style="position:absolute;left:77.25px;top:492.50px" class="cls_002"><span class="cls_002">TEAM_FIELDING_E</span></div>
+<div style="position:absolute;left:233.25px;top:492.50px" class="cls_002"><span class="cls_002">246.48</span></div>
+<div style="position:absolute;left:389.25px;top:492.50px" class="cls_002"><span class="cls_002">102</span></div>
+<div style="position:absolute;left:77.25px;top:515.75px" class="cls_002"><span class="cls_002">TEAM_BASERUN_SB</span></div>
+<div style="position:absolute;left:233.25px;top:515.75px" class="cls_002"><span class="cls_002">117.58</span></div>
+<div style="position:absolute;left:389.25px;top:515.75px" class="cls_002"><span class="cls_002">63</span></div>
+<div style="position:absolute;left:77.25px;top:539.00px" class="cls_002"><span class="cls_002">TEAM_PITCHING_H</span></div>
+<div style="position:absolute;left:233.25px;top:539.00px" class="cls_002"><span class="cls_002">1779.21</span></div>
+<div style="position:absolute;left:389.25px;top:539.00px" class="cls_002"><span class="cls_002">37</span></div>
+<div style="position:absolute;left:77.25px;top:562.25px" class="cls_002"><span class="cls_002">TEAM_PITCHING_SO</span></div>
+<div style="position:absolute;left:233.25px;top:562.25px" class="cls_002"><span class="cls_002">781.08</span></div>
+<div style="position:absolute;left:389.25px;top:562.25px" class="cls_002"><span class="cls_002">7</span></div>
+<div style="position:absolute;left:77.25px;top:585.50px" class="cls_002"><span class="cls_002">TEAM_PTICHING_BB</span></div>
+<div style="position:absolute;left:233.25px;top:585.50px" class="cls_002"><span class="cls_002">553.01</span></div>
+<div style="position:absolute;left:389.25px;top:585.50px" class="cls_002"><span class="cls_002">6</span></div>
+<div style="position:absolute;left:77.25px;top:608.75px" class="cls_002"><span class="cls_002">TEAM_BATTING_3B</span></div>
+<div style="position:absolute;left:233.25px;top:608.75px" class="cls_002"><span class="cls_002">55.25</span></div>
+<div style="position:absolute;left:389.25px;top:608.75px" class="cls_002"><span class="cls_002">5</span></div>
+<div style="position:absolute;left:77.25px;top:632.00px" class="cls_002"><span class="cls_002">TEAM_PITCHING_HR</span></div>
+<div style="position:absolute;left:233.25px;top:632.00px" class="cls_002"><span class="cls_002">105.70</span></div>
+<div style="position:absolute;left:389.25px;top:632.00px" class="cls_002"><span class="cls_002">3</span></div>
+<div style="position:absolute;left:72.00px;top:677.00px" class="cls_002"><span class="cls_002">For these outliers, I decided to trim the max values to limit the values to 3 times the mean value. I</span></div>
+<div style="position:absolute;left:72.00px;top:690.50px" class="cls_002"><span class="cls_002">replaced each value higher than this number with the value equal to the 3 times the previous original</span></div>
+<div style="position:absolute;left:72.00px;top:704.00px" class="cls_002"><span class="cls_002">mean, shown in table above.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:3208px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background05.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:71.75px" class="cls_002"><span class="cls_002">Next, I considered the zero values that were created for each variable to replace the NAs as an outlier on</span></div>
+<div style="position:absolute;left:72.00px;top:85.25px" class="cls_002"><span class="cls_002">the low end. Because of the fact that several variables contained many zero values, the overall linear</span></div>
+<div style="position:absolute;left:72.00px;top:98.75px" class="cls_002"><span class="cls_002">relationship was skewed on the low end. For the zero values  in each, I made a decision to replace all zero</span></div>
+<div style="position:absolute;left:72.00px;top:112.25px" class="cls_002"><span class="cls_002">values with the original mean value. This was done for both the training and the test sets. Afterwards, we</span></div>
+<div style="position:absolute;left:72.00px;top:125.75px" class="cls_002"><span class="cls_002">have the following min values for each.</span></div>
+<div style="position:absolute;left:72.00px;top:505.25px" class="cls_002"><span class="cls_002">The new descriptive stats are given for each variable with the cleaned data.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:4010px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background06.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:533.75px" class="cls_002"><span class="cls_002">I also plotted the partial regression line for each variable against the response TARGET_WINS to check</span></div>
+<div style="position:absolute;left:72.00px;top:547.25px" class="cls_002"><span class="cls_002">the linear relationship. I verified that variables associated with positive influence on wins like team batting</span></div>
+<div style="position:absolute;left:72.00px;top:560.75px" class="cls_002"><span class="cls_002">hits as shown below showed a strong positive trend. More details for this were performed in the model</span></div>
+<div style="position:absolute;left:72.00px;top:574.25px" class="cls_002"><span class="cls_002">building section that follows.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:4812px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background07.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:265.25px" class="cls_002"><span class="cls_002">Finally, I considered new variables before moving on to the model selection process. Because many of the</span></div>
+<div style="position:absolute;left:72.00px;top:278.75px" class="cls_002"><span class="cls_002">distributions provided in the training dataset did not closely resemble normality, I thought introducing</span></div>
+<div style="position:absolute;left:72.00px;top:292.25px" class="cls_002"><span class="cls_002">log-transformed variable may help. I was especially interested in testing log-transformed variables for the</span></div>
+<div style="position:absolute;left:72.00px;top:305.75px" class="cls_002"><span class="cls_002">team baserun and team pitching variables because these were so highly skewed due to the many low</span></div>
+<div style="position:absolute;left:72.00px;top:319.25px" class="cls_002"><span class="cls_002">values shown in the histogram plots above. In addition I also tried created a new variable just for singles</span></div>
+<div style="position:absolute;left:72.00px;top:332.75px" class="cls_002"><span class="cls_002">from the hits variable. I really focused on utilizing the log values to try to get a closer approximation to the</span></div>
+<div style="position:absolute;left:72.00px;top:346.25px" class="cls_002"><span class="cls_002">normal distribution, however this did not ultimately increase my final score of my model in Kaggle. All new</span></div>
+<div style="position:absolute;left:72.00px;top:359.75px" class="cls_002"><span class="cls_002">variables added to both training and test datasets can be found in the notebook. Partial regression plots</span></div>
+<div style="position:absolute;left:72.00px;top:373.25px" class="cls_002"><span class="cls_002">were done as well to compare with the OLS regression summary. With each new variable test, I compared</span></div>
+<div style="position:absolute;left:72.00px;top:386.75px" class="cls_002"><span class="cls_002">the P values for each coefficient as well as the overall F-statistic to determine statistical significance.</span></div>
+<div style="position:absolute;left:72.00px;top:413.75px" class="cls_005"><span class="cls_005">Build Models</span></div>
+<div style="position:absolute;left:72.00px;top:427.25px" class="cls_002"><span class="cls_002">The first thing I did for the model building process was write a function to be able to quickly build and</span></div>
+<div style="position:absolute;left:72.00px;top:440.75px" class="cls_002"><span class="cls_002">analyze the model from a single string definition. I could then define a list for the exact variables I wanted</span></div>
+<div style="position:absolute;left:72.00px;top:454.25px" class="cls_002"><span class="cls_002">to test for each iteration and run each test without a code change. I kept a record of each trial run by</span></div>
+<div style="position:absolute;left:72.00px;top:467.75px" class="cls_002"><span class="cls_002">defining new variables for each test to correspond with the resulting output data file to be scored in</span></div>
+<div style="position:absolute;left:72.00px;top:481.25px" class="cls_002"><span class="cls_002">Kaggle. I then used the </span><span class="cls_003">smf.ols() </span><span class="cls_002">function from the statsmodels package to fit the full model and view the</span></div>
+<div style="position:absolute;left:72.00px;top:494.75px" class="cls_002"><span class="cls_002">results summary for each trial.</span></div>
+<div style="position:absolute;left:72.00px;top:521.75px" class="cls_002"><span class="cls_002">I employed a few different methods for building and testing the models. The full list of all models tested</span></div>
+<div style="position:absolute;left:72.00px;top:535.25px" class="cls_002"><span class="cls_002">and submitted can be found in my notebook file. First, I programmed a way to build the model string that I</span></div>
+<div style="position:absolute;left:72.00px;top:548.75px" class="cls_002"><span class="cls_002">wanted to test so that it could be broken down into individual components. To test different models, I</span></div>
+<div style="position:absolute;left:72.00px;top:562.25px" class="cls_002"><span class="cls_002">simply had to provide the full model string and use the cells below it to perform analysis on the full and</span></div>
+<div style="position:absolute;left:72.00px;top:575.75px" class="cls_002"><span class="cls_002">reduced models. The primary metrics used for determining the accuracy of the model were Adjusted</span></div>
+<div style="position:absolute;left:72.00px;top:589.25px" class="cls_002"><span class="cls_002">R-Squared, AIC and BIC values. The statsmodel package was used to quickly perform the calculations and</span></div>
+<div style="position:absolute;left:72.00px;top:602.75px" class="cls_002"><span class="cls_002">provide a table output of the summary. To compare different models I started with the Adjusted</span></div>
+<div style="position:absolute;left:72.00px;top:616.25px" class="cls_002"><span class="cls_002">R-Squared values provided for each model string to determine the relative accuracy of the model.</span></div>
+<div style="position:absolute;left:72.00px;top:629.75px" class="cls_002"><span class="cls_002">However, I also chose to use AIC and BIC with a step-wise iterative approach to determine which predictor</span></div>
+<div style="position:absolute;left:72.00px;top:643.25px" class="cls_002"><span class="cls_002">variables gave the best fit. Because AIC will continue to get smaller as I add variables, I used BIC to</span></div>
+<div style="position:absolute;left:72.00px;top:656.75px" class="cls_002"><span class="cls_002">penalized overly complex models with too many variables. The combination of the lowest AIC and BIC</span></div>
+<div style="position:absolute;left:72.00px;top:670.25px" class="cls_002"><span class="cls_002">scored gave me insight as to which specific variables gave the best performing model.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:5614px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background08.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:71.75px" class="cls_002"><span class="cls_002">The first metric I was looking for in each was the p-value to determine the statistical significance of each</span></div>
+<div style="position:absolute;left:72.00px;top:85.25px" class="cls_002"><span class="cls_002">coefficient included in the model. When comparing each variable for a given trial model, the first thing I</span></div>
+<div style="position:absolute;left:72.00px;top:98.75px" class="cls_002"><span class="cls_002">looked as was the p-value to determine if the data given in that variable provided enough statistical</span></div>
+<div style="position:absolute;left:72.00px;top:112.25px" class="cls_002"><span class="cls_002">significance to be considered as a reliable predictor of the response. A p-value of less than 0.5 indicates</span></div>
+<div style="position:absolute;left:72.00px;top:125.75px" class="cls_002"><span class="cls_002">the variable is statistically significant so I started by removing variables like TEAM_PITCHING_SO and</span></div>
+<div style="position:absolute;left:72.00px;top:139.25px" class="cls_002"><span class="cls_002">TEAM_BATTING_SO which gave p-values of .9 or higher. This indicates the t-test for the error between the</span></div>
+<div style="position:absolute;left:72.00px;top:152.75px" class="cls_002"><span class="cls_002">observed and the predicted values failed. However, as I found after running several trials the resulting</span></div>
+<div style="position:absolute;left:72.00px;top:166.25px" class="cls_002"><span class="cls_002">p-values changed depending on the variables included in the model. So, we also need to look at the</span></div>
+<div style="position:absolute;left:72.00px;top:179.75px" class="cls_002"><span class="cls_002">relative fit of the model using the R-squared value.</span></div>
+<div style="position:absolute;left:72.00px;top:193.25px" class="cls_002"><span class="cls_002">The r-squared value provides a metric to determine the accuracy of the model. For the model I ultimately</span></div>
+<div style="position:absolute;left:72.00px;top:206.75px" class="cls_002"><span class="cls_002">submitted, the R-squared was 0.220 and the Adjusted R-squared was 0.216. I found that when I used</span></div>
+<div style="position:absolute;left:72.00px;top:220.25px" class="cls_002"><span class="cls_002">models that used the log-transformed variables I saw a higher R-squared value in general. For example, by</span></div>
+<div style="position:absolute;left:72.00px;top:233.75px" class="cls_002"><span class="cls_002">modifying only the three TEAM_PITCHING_ variables in my same model as my selected, I saw the</span></div>
+<div style="position:absolute;left:72.00px;top:247.25px" class="cls_002"><span class="cls_002">R-squared and Adjusted R-squared values increase to 0.232 and 0.228 respectively. However, I noticed</span></div>
+<div style="position:absolute;left:72.00px;top:260.75px" class="cls_002"><span class="cls_002">that my public score in the Kaggle competition decreased as a result of using the log-transformed values.</span></div>
+<div style="position:absolute;left:72.00px;top:274.25px" class="cls_002"><span class="cls_002">After trial several variations without a decreasing score I decided to omit the log values in my models</span></div>
+<div style="position:absolute;left:72.00px;top:287.75px" class="cls_002"><span class="cls_002">altogether.</span></div>
+<div style="position:absolute;left:72.00px;top:301.25px" class="cls_002"><span class="cls_002">The next metric I reviewed with each trial was the skewness and kurtosis. These are useful to determine</span></div>
+<div style="position:absolute;left:72.00px;top:314.75px" class="cls_002"><span class="cls_002">the relative location and variability in any model. We generally want to see skewness around zero and</span></div>
+<div style="position:absolute;left:72.00px;top:328.25px" class="cls_002"><span class="cls_002">kurtosis near 3 and again I noticed the log-values tended to perform better in this regard. I noticed that for</span></div>
+<div style="position:absolute;left:72.00px;top:341.75px" class="cls_002"><span class="cls_002">most of the models I tested, the values for these were not significantly impacted by the inclusion or</span></div>
+<div style="position:absolute;left:72.00px;top:355.25px" class="cls_002"><span class="cls_002">exclusion of one or two variables.</span></div>
+<div style="position:absolute;left:72.00px;top:368.75px" class="cls_002"><span class="cls_002">Finally, in each linear regression result obtained for a given trial model, I was interested in the AIC and BIC</span></div>
+<div style="position:absolute;left:72.00px;top:382.25px" class="cls_002"><span class="cls_002">values reported in the summary. I wanted to use this information to determine how many variables as well</span></div>
+<div style="position:absolute;left:72.00px;top:395.75px" class="cls_002"><span class="cls_002">as which variables to include in my model.</span></div>
+<div style="position:absolute;left:72.00px;top:422.75px" class="cls_002"><span class="cls_002">I search for an R-like package that would given me a step-wise forward selection process that compared</span></div>
+<div style="position:absolute;left:72.00px;top:436.25px" class="cls_002"><span class="cls_002">AIC and BIC values at each step to determine the right set of variables. Finding no such package for</span></div>
+<div style="position:absolute;left:72.00px;top:449.75px" class="cls_002"><span class="cls_002">Python I tried to write my own. My function stepwise_fwd_selection was used for this. I included BIC</span></div>
+<div style="position:absolute;left:72.00px;top:463.25px" class="cls_002"><span class="cls_002">because I know that AIC will continue to increase as we add more variables and concluded that finding</span></div>
+<div style="position:absolute;left:72.00px;top:476.75px" class="cls_002"><span class="cls_002">the point where BIC values began decreasing should offer clues about stopping point. So for example in</span></div>
+<div style="position:absolute;left:72.00px;top:490.25px" class="cls_002"><span class="cls_002">my model that included the following predictors:</span></div>
+<div style="position:absolute;left:72.00px;top:503.75px" class="cls_002"><span class="cls_002">TARGET_WINS ~ TEAM_BATTING_HR + TEAM_BATTING_2B + TEAM_BATTING_3B + TEAM_BATTING_BB</span></div>
+<div style="position:absolute;left:72.00px;top:517.25px" class="cls_002"><span class="cls_002">+ TEAM_FIELDING_DP + TEAM_PITCHING_SO + TEAM_BATTING_SO + TEAM_BASERUN_CS +</span></div>
+<div style="position:absolute;left:72.00px;top:530.75px" class="cls_002"><span class="cls_002">TEAM_FIELDING_E + </span><span class="cls_003">LOG_TEAM_PITCHING_BB + LOG_TEAM_PITCHING_H + LOG_TEAM_PITCHING_HR</span></div>
+<div style="position:absolute;left:72.00px;top:557.75px" class="cls_002"><span class="cls_002">I obtained the following printed results indicating that I should try a model without the last</span></div>
+<div style="position:absolute;left:72.00px;top:571.25px" class="cls_002"><span class="cls_002">LOG_TEAM_PITCHING_HR variable. The counts listed at the end give the max values for R-squared (11),</span></div>
+<div style="position:absolute;left:72.00px;top:584.75px" class="cls_002"><span class="cls_002">AIC (11) and BIC (10) respectively. If BIC max value is less than AIC, it indicates my model is being</span></div>
+<div style="position:absolute;left:72.00px;top:598.25px" class="cls_002"><span class="cls_002">penalized for being more compless. In other words, more variables may not be a good thing despite the</span></div>
+<div style="position:absolute;left:72.00px;top:611.75px" class="cls_002"><span class="cls_002">higher R-squared value and I should try fewer, or different variables.</span></div>
+<div style="position:absolute;left:72.00px;top:691.25px" class="cls_002"><span class="cls_002">The next portion of my tests in the model building process followed the R-like plots of the OLS regression</span></div>
+<div style="position:absolute;left:72.00px;top:704.75px" class="cls_002"><span class="cls_002">plots. These were done to verify model assumptions. The first was a plot of the residuals versus fitted</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:6416px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background09.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:71.75px" class="cls_002"><span class="cls_002">values for individual single variables used in my model. While it can be time consuming to check many</span></div>
+<div style="position:absolute;left:72.00px;top:85.25px" class="cls_002"><span class="cls_002">variables one by one, it was useful to verify the residual plot. For example, the TEAM_BATTING_H plot is</span></div>
+<div style="position:absolute;left:72.00px;top:98.75px" class="cls_002"><span class="cls_002">shown here.</span></div>
+<div style="position:absolute;left:72.00px;top:394.25px" class="cls_002"><span class="cls_002">The next plot that is useful to check is the Q-Q plot of the normalized residuals shown below. This is</span></div>
+<div style="position:absolute;left:72.00px;top:407.75px" class="cls_002"><span class="cls_002">useful for validating the common distribution assumption and for observing the ‘tail behavior’ to see</span></div>
+<div style="position:absolute;left:72.00px;top:421.25px" class="cls_002"><span class="cls_002">effects. Here is the Q-Q plot for the same model.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:7218px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background10.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:378.50px" class="cls_002"><span class="cls_002">The third visual item that was checked is the Scale-Location plot. Similar to the residuals plot, here again</span></div>
+<div style="position:absolute;left:72.00px;top:392.00px" class="cls_002"><span class="cls_002">we are looking for any patterns that would indicate these residuals do not come from the normal</span></div>
+<div style="position:absolute;left:72.00px;top:405.50px" class="cls_002"><span class="cls_002">distribution. The ideal plot shows uniform residuals versus fitted values. This is shown below.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:8020px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background11.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:389.00px" class="cls_002"><span class="cls_002">Finally, the fourth item useful for validating model assumptions is the leverage plot. This shows the</span></div>
+<div style="position:absolute;left:72.00px;top:402.50px" class="cls_002"><span class="cls_002">residuals versus leverage to detect the ‘pull’ of outliers within the data. The Cook’s Distance values can be</span></div>
+<div style="position:absolute;left:72.00px;top:416.00px" class="cls_002"><span class="cls_002">used to determine any outliers that have too much leverage on the resulting fit. This is shown below.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:8822px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background12.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:381.50px" class="cls_002"><span class="cls_002">Throughout the model building and validation process I ran several visual analyses similar to the output</span></div>
+<div style="position:absolute;left:72.00px;top:395.00px" class="cls_002"><span class="cls_002">provided from the lm() function in R, which I had used in the past to validate model parameter selection.</span></div>
+<div style="position:absolute;left:72.00px;top:408.50px" class="cls_002"><span class="cls_002">Using the four primary components of this aside from viewing the model results summary were the</span></div>
+<div style="position:absolute;left:72.00px;top:422.00px" class="cls_002"><span class="cls_002">Residuals vs Fitted Values plot, the Q-Q Plot, the Scale-Location plot, and the Leverage and Cook’s D plots</span></div>
+<div style="position:absolute;left:72.00px;top:435.50px" class="cls_002"><span class="cls_002">show in the notebook output. Ultimately, these are all just tools to determine the best model and the</span></div>
+<div style="position:absolute;left:72.00px;top:449.00px" class="cls_002"><span class="cls_002">ability of that model to accurately predict the response. The linear model summary for the final model</span></div>
+<div style="position:absolute;left:72.00px;top:462.50px" class="cls_002"><span class="cls_002">used is given here.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:9624px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background13.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:377.00px" class="cls_005"><span class="cls_005">Select Model</span></div>
+<div style="position:absolute;left:72.00px;top:404.00px" class="cls_002"><span class="cls_002">The model I ultimately selected was one of the simpler models based on the performance score in</span></div>
+<div style="position:absolute;left:72.00px;top:417.50px" class="cls_002"><span class="cls_002">Kaggle. This ended up being one of my first models submitted. This model was used for submission #3</span></div>
+<div style="position:absolute;left:72.00px;top:431.00px" class="cls_002"><span class="cls_002">with a public score of 13.2. The final model string is as follows.</span></div>
+<div style="position:absolute;left:72.00px;top:458.00px" class="cls_003"><span class="cls_003">'TARGET_WINS ~ TEAM_BATTING_H + TEAM_BATTING_BB + TEAM_FIELDING_DP + TE</span></div>
+<div style="position:absolute;left:72.00px;top:471.50px" class="cls_003"><span class="cls_003">AM_PITCHING_SO + TEAM_BATTING_SO + TEAM_FIELDING_E + TEAM_PITCHING_BB +</span></div>
+<div style="position:absolute;left:72.00px;top:485.00px" class="cls_003"><span class="cls_003">TEAM_PITCHING_H + TEAM_PITCHING_HR'</span></div>
+<div style="position:absolute;left:72.00px;top:512.00px" class="cls_002"><span class="cls_002">Based on the summary table above this full model could be written as,</span></div>
+<div style="position:absolute;left:72.00px;top:525.50px" class="cls_002"><span class="cls_002">TARGET_WINS = 15.9986 + 0.0545 * TEAM_BATTING_H + 0.0077 * TEAM_BATTING_BB - 0.1465 *</span></div>
+<div style="position:absolute;left:72.00px;top:539.00px" class="cls_002"><span class="cls_002">TEAM_FIELDING_DP - 0.0002 * TEAM_PITCHING_SO + 0.0003 * TEAM_BATTING_SO - 0.0129 *</span></div>
+<div style="position:absolute;left:72.00px;top:552.50px" class="cls_002"><span class="cls_002">TEAM_FIELDING_E + 0.0133 * TEAM_PITCHING_BB - 0.0028 * TEAM_PITCHING_H + 0.0224 *</span></div>
+<div style="position:absolute;left:72.00px;top:566.00px" class="cls_002"><span class="cls_002">TEAM_PITCHING_HR</span></div>
+<div style="position:absolute;left:72.00px;top:593.00px" class="cls_002"><span class="cls_002">While this formula is mostly intuitive, a couple components are a little odd like the negative coefficient</span></div>
+<div style="position:absolute;left:72.00px;top:606.50px" class="cls_002"><span class="cls_002">value on team fielding double plays and the positive value on the team pitching home runs. Most</span></div>
+<div style="position:absolute;left:72.00px;top:620.00px" class="cls_002"><span class="cls_002">coefficients showed positive values that would be expected based on things that contribute to good</span></div>
+<div style="position:absolute;left:72.00px;top:633.50px" class="cls_002"><span class="cls_002">baseball, like hits, walks and good pitching. But a few seemed the opposite as expected such as positive</span></div>
+<div style="position:absolute;left:72.00px;top:647.00px" class="cls_002"><span class="cls_002">values for things that contribute to bad baseball like bad pitching and bad defensive fielding. The model is</span></div>
+<div style="position:absolute;left:72.00px;top:660.50px" class="cls_002"><span class="cls_002">relatively simple using nine predictors out of the possible 15 and without employing transformations. As</span></div>
+<div style="position:absolute;left:72.00px;top:674.00px" class="cls_002"><span class="cls_002">compared to other models the AIC and BIC values of </span><span class="cls_003">18,260 and 18,310 </span><span class="cls_002">were respectively lower and the</span></div>
+<div style="position:absolute;left:72.00px;top:687.50px" class="cls_002"><span class="cls_002">R-squared value of </span><span class="cls_003">0.276 </span><span class="cls_002">is reasonably high as well.</span></div>
+</div>
+<div style="position:absolute;left:50%;margin-left:-306px;top:10426px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="./411Assignment1Knight2_files/background14.jpg" width="612" height="792"></div>
+<div style="position:absolute;left:72.00px;top:71.75px" class="cls_002"><span class="cls_002">The independent variables were chosen to based on various tests performed in EDA and model validation</span></div>
+<div style="position:absolute;left:72.00px;top:85.25px" class="cls_002"><span class="cls_002">test. First, the variable TEAM_BATTING_H showed a strong positive relationship to the number of</span></div>
+<div style="position:absolute;left:72.00px;top:98.75px" class="cls_002"><span class="cls_002">TARGET_WINS and due to the fact that it includes all hits (singles, doubles, triples and home runs), I</span></div>
+<div style="position:absolute;left:72.00px;top:112.25px" class="cls_002"><span class="cls_002">chose to simplify the model and use this over separating out the individual elements and risk</span></div>
+<div style="position:absolute;left:72.00px;top:125.75px" class="cls_002"><span class="cls_002">multicollinearity issues by overlapping variables that were highly correlated in their contributions to the</span></div>
+<div style="position:absolute;left:72.00px;top:139.25px" class="cls_002"><span class="cls_002">response variable. Also, after trying log- and sqrt-transformed variables on both predictors and the</span></div>
+<div style="position:absolute;left:72.00px;top:152.75px" class="cls_002"><span class="cls_002">dependent response variable, these results showed that transforming the variables generally did not</span></div>
+<div style="position:absolute;left:72.00px;top:166.25px" class="cls_002"><span class="cls_002">improve my performance. This was all surprising as many of the tests I performed which I thought would</span></div>
+<div style="position:absolute;left:72.00px;top:179.75px" class="cls_002"><span class="cls_002">help improve the score did not. For example, standardizing data, imputing extreme outliers, taking actions</span></div>
+<div style="position:absolute;left:72.00px;top:193.25px" class="cls_002"><span class="cls_002">to improve collinearity and transformations of the predictors all did not seem to provide a significant</span></div>
+<div style="position:absolute;left:72.00px;top:206.75px" class="cls_002"><span class="cls_002">improvement.</span></div>
+<div style="position:absolute;left:72.00px;top:233.75px" class="cls_005"><span class="cls_005">Scored Data File</span></div>
+<div style="position:absolute;left:72.00px;top:247.25px" class="cls_002"><span class="cls_002">The final scored data file that had the best overall score ended up being </span><span class="cls_003">andrew_knight_predictions3.csv</span></div>
+<div style="position:absolute;left:72.00px;top:260.75px" class="cls_002"><span class="cls_002">on Kaggle. It is also included in the final submission files for the assignment in Canvas.</span></div>
+<div style="position:absolute;left:72.00px;top:287.75px" class="cls_005"><span class="cls_005">Conclusion</span></div>
+<div style="position:absolute;left:72.00px;top:301.25px" class="cls_002"><span class="cls_002">In conclusion, I enjoyed this assignment and the practice of performing the EDA, Data Prep and Model</span></div>
+<div style="position:absolute;left:72.00px;top:314.75px" class="cls_002"><span class="cls_002">Building process. I would have liked to have seen a better improvement in the public score on Kaggle</span></div>
+<div style="position:absolute;left:72.00px;top:328.25px" class="cls_002"><span class="cls_002">based on the many tests in my analysis. The Jupyter Notebook file should show the depth of the analysis</span></div>
+<div style="position:absolute;left:72.00px;top:341.75px" class="cls_002"><span class="cls_002">that went into my final result and much effort went into clearly explaining my approach, calculations and</span></div>
+<div style="position:absolute;left:72.00px;top:355.25px" class="cls_002"><span class="cls_002">graphical results throughout.</span></div>
+</div>
+
+
+
+</body></html>
