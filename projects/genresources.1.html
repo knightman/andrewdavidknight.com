@@ -25,42 +25,47 @@
 							<h2>General Resources</h2>
 							<font size="2" color="grey">A Curated List of Useful Content.</font>
                         </header>
-						<!-- <hr /> -->
+						<hr />
 
-                        <!-- Tab Sections -->
-                        <div class="tab">
-							<button class="tablinks" onclick="openTab(event, 'First')" id="defaultOpen">First</button>
-							<button class="tablinks" onclick="openTab(event, 'Second')">Second</button>
-							<button class="tablinks" onclick="openTab(event, 'Third')">Third</button>
-							</div>
-							
-							<div id="First" class="tabcontent">
-							<h3>First</h3>
-							<p>This is the first tab</p>
-							<p><a href=""> Recommended Product and Business Books</a></p>
-							<p><a href="">Recommended Data Science or Machine Learning Publications</a></p>
-							</div>
-							
-							<div id="Second" class="tabcontent">
-							<h3>Second</h3>
-							<p>This is the second tab</p> 
-							</div>
-							
-							<div id="Third" class="tabcontent">
-							<h3>Third</h3>
-							<p>This is the third tab</p>
-						</div>
+                        <!-- Section 1-->
+                        <p><h2>Books</h2>
+                            <!-- <font size="2" color="grey">Good Books for Data Science, Machine Learning, Product and Business</font> -->
+                        </p>
+						<p><a href="prodbizbooks.html"> Recommended Product and Business Books</a></p>
+						<p><a href="dsmlpubs.html">Recommended Data Science or Machine Learning Publications</a></p>
+                        <hr />
+                        
+                        <!-- Section 2-->
+                        <p><h2>Programming Frameworks and Examples</h2>
+                            <!-- <font size="2" color="grey">Most useful IDEs, frameworks, libraries, code examples and guides</font> -->
+                        </p>
+                        <p><a href="">IDEs, Languages, Libraries and Tools</a></p>
+						<p><a href="">Code Examples and Howtos</a></p>
+						<hr />
+						
+						<!-- Section 3-->
+                        <p><h2>Educational Resources</h2>
+                            <!-- <font size="2" color="grey">Continuous Learning and Misc References</font> -->
+                        </p>
+                        <p><a href="">Online Courses and Videos</a></p>
+						<p><a href="">Other Misc References</a></p>
 						<br>
 						
 						<br>
-						<!-- Nav Menu -->
+						<!-- Nav & Share Menu -->
 						<div>
 							<a href="main.html" class="nav-btn"><i class="fa fa-arrow-left"></i></a>
 							<a href="../index.html" class="nav-btn"><i class="fa fa-home"></i></a>
 							<a href="https://github.com/knightman/gen-resources" target="_blank" class="nav-btn"><i class="fa fa-github"></i></a>
 						</div>
 					</section>
-
+				
+				<!-- Nav & Share Menu -->
+				<!-- <div>
+					<a href="main.html" class="nav-btn"><i class="fa fa-arrow-left"></i></a>
+					<a href="../index.html" class="nav-btn"><i class="fa fa-home"></i></a>
+					<a href="https://github.com/knightman" target="_blank" class="nav-btn"><i class="fa fa-github"></i></a>
+				</div> -->
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
@@ -75,23 +80,6 @@
 					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
 					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
 				}
-			</script>
-			<script>
-				function openTab(evt, tabName) {
-					var i, tabcontent, tablinks;
-					tabcontent = document.getElementsByClassName("tabcontent");
-					for (i = 0; i < tabcontent.length; i++) {
-						tabcontent[i].style.display = "none";
-					}
-					tablinks = document.getElementsByClassName("tablinks");
-					for (i = 0; i < tablinks.length; i++) {
-						tablinks[i].className = tablinks[i].className.replace(" active", "");
-					}
-					document.getElementById(tabName).style.display = "block";
-					evt.currentTarget.className += " active";
-				}
-				// Get the element with id="defaultOpen" and click on it
-				document.getElementById("defaultOpen").click();
 			</script>
 	</body>
 </html>
